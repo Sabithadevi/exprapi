@@ -6,7 +6,7 @@ phases:
     - echo Logging in to Amazon ECR.... 
     - aws --version
     # update the following line with your own region
-    - $(aws ecr get-login --no-include-email --region eu-east-1)
+    - $(aws ecr get-login --region eu-east-1)
     - REPOSITORY_URI=364433479036.dkr.ecr.us-east-1.amazonaws.com/api-repo
     - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
     - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awsk -F":" '{print $2}')
