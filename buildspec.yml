@@ -6,7 +6,7 @@ phases:
     - echo Logging in to Amazon ECR.... 
     - aws --version
     # update the following line with your own region
-    - $Invoke-Expression -Command (aws ecr get-login --no-include-email --region us-east-1)
+    - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
     - REPOSITORY_URI=364433479036.dkr.ecr.us-east-1.amazonaws.com/api-repo
     - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
     - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awsk -F":" '{print $2}')
